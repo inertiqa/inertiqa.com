@@ -1,2 +1,2 @@
-# inertiqa.com
-inertiqa.com
+# inertica.com
+all images are © do as you please with the code

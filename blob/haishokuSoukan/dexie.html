@@ -1,0 +1,23 @@
+<!doctype html>
+<html>
+  <head>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/dexie/3.0.2/dexie.min.js" integrity="sha512-Vir5zWsvcM/cvv/YIpguFo1Ppx4mtFrY9llk6iJmx3jgBh5zcjP4Hz80xuEAoqwBTBUx9wSViEM2i8lCfv/i6g==" crossorigin="anonymous"></script>
+
+      <script>
+          var db = new Dexie("haishokuSoukan");
+          db.version(1).stores({
+              colors: "name,hex"
+          });
+
+          db.colors.put({name: "hermosa pink", hex: "#f7c9d5"}),
+          db.colors.put({name: "corinthian pink", hex: "#f6bdc0"})
+          .then (function(){
+              return db.colors.get("hermosa pink");
+          }).then(function (color) {
+              alert (color.name + " has hex number " + color.hex);
+          }).catch(function(error) {
+             alert ("Ooops: " + error);
+          });
+      </script>
+  </head>
+</html>

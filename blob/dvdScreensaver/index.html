@@ -1,0 +1,109 @@
+﻿<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="author" content="OOQQ">
+		<meta name="revised" content="Wednesday, Jan 09th, 2019, 10:58:50 am" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+		<title>DVD Screensaver - OOQQ</title>
+
+		<link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/minireset.css/0.0.2/minireset.min.css" integrity="sha512-uBLaY+6crwV4JAHILx0HWvYncrX7TXL770hqxly0ZsQ199v4lr2yNB2jiPMoxNajFPHSQnU80B1O8dJLujWZMg==" crossorigin="anonymous" as="style" onload="this.rel='stylesheet'" />
+		<base href="./">
+		<link rel="icon" type="image/svg+xml" href="../../favicon.svg" type="image/x-icon" />
+		<link rel="alternate icon" href="../../favicon.png" type="image/x-icon" />
+		<style>html, body{margin:0;padding:0;overflow:hidden}</style>
+	</head>
+
+	<body></body>
+
+	<script>
+		generateCanvas();
+
+		const sound = new Audio("dvdBounce.mp3");
+
+		const dvdLogo = new Path2D("M116.582 100.112c-15.335 0-27.624-2.555-27.624-5.671 0-3.113 12.289-5.664 27.624-5.664 15.217 0 27.514 2.551 27.514 5.664 0 3.117-12.297 5.671-27.514 5.671zm12.513-58.67L116.248 0H21.984l-3.275 13.663h30.565c15.891 0 25.594 6.335 22.884 17.56-2.928 12.223-16.796 17.445-31.571 17.445h-5.526l7.104-29.892H17.47L6.985 62.439h35.068c26.383 0 51.412-13.663 55.926-31.217.791-3.224.679-11.335-1.35-16.115 0-.113-.115-.333-.227-.662-.111-.113-.228-.892.227-1.007.222-.109.673.335.673.449 0 0 .228.558.449 1.001L120.075 77l56.837-63.227 29.876-.111c15.902 0 25.71 6.335 23 17.56-2.937 12.224-16.906 17.446-31.681 17.446h-5.644l7.221-29.892H174.99l-10.487 43.663h35.069c26.384 0 51.634-13.663 55.812-31.217C259.665 13.663 241.176 0 214.563 0h-52.315l-33.153 41.442zM0 94.111C0 103.441 54.122 111 120.864 111c66.864 0 120.994-7.559 120.994-16.889 0-9.335-54.13-16.891-120.994-16.891C54.122 77.221 0 84.776 0 94.111z");
+		const sizeX = 256;
+		const sizeY = 111;
+
+		const canvas = document.querySelector("canvas");
+		canvas.width = window.innerWidth;
+		canvas.height = window.innerHeight;
+		const context = canvas.getContext("2d");
+
+		let positionX = 264;
+		let positionY = 264;
+		let deltaX = 2;
+		let deltaY = 2;
+
+		let currentColor = "blue";
+		let isOver = false;
+
+		canvas.addEventListener('click', function (e) {
+			e.preventDefault();
+			if (isOver) {
+				location.href = "https://necronomimi.com/blob/";
+			}
+		}, false);
+
+		canvas.addEventListener('mousemove', function (e) {
+			e.preventDefault()
+			if ((e.pageX >= positionX && e.pageX <= positionX + sizeX) && (e.pageY >= positionY && e.pageY <= positionY + sizeY)) {
+				canvas.style.cursor = "pointer";
+				isOver = true;
+			} else {
+				canvas.style.cursor = "auto";
+				isOver = false;
+			}
+		}, false);
+
+		window.onload = window.requestAnimationFrame(gameLoop); //gameloop with delta
+
+		function gameLoop(timeStamp) {
+			clearFrame();
+			dvdUpdate();
+			window.requestAnimationFrame(gameLoop); //callback
+		}
+
+		function clearFrame() {
+			context.fillStyle = "black";
+			context.fillRect(0, 0, canvas.width, canvas.height);
+		}
+
+		function dvdUpdate() {
+			if (positionX + sizeX >= canvas.width || positionX <= 0) {
+				deltaX = -deltaX;
+				sound.play();
+				currentColor = randomColor();
+			} else if (positionY + sizeY >= canvas.height || positionY <= 0) {
+				deltaY = -deltaY;
+				sound.play();
+				currentColor = randomColor();
+			}
+
+			positionX += deltaX;
+			positionY += deltaY;
+			dvdDraw();
+		}
+
+		function dvdDraw() {
+			context.transform(1, 0, 0, 1, positionX, positionY);
+			context.beginPath();
+			context.fillStyle = currentColor;
+			context.fill(dvdLogo);
+			context.closePath()
+			context.transform(1, 0, 0, 1, -positionX, -positionY);
+		}
+
+		function randomColor() {
+			return "hsla(" + ~~(360 * Math.random()) + "," + "50%," + "50%, 1)";
+		}
+
+		function generateCanvas() {
+			let canvas = document.createElement("canvas");
+			canvas.id = "canvas";
+			document.querySelector("body").appendChild(canvas);
+			document.querySelector("canvas").innerHTML = "Your shit browser does not support the HTML5 canvas tag.";
+		}
+	</script>
+</html>

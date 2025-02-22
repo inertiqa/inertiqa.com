@@ -1,0 +1,14 @@
+<section>
+	<article>
+		<form id="color_list"></form>
+	</article>
+</section>
+
+<script>
+	readColors(db, listColors);
+	$('#more').click(function(e) {
+		e.preventDefault();
+		var dir = $(this).attr("href");
+		navigate(dir);
+	})
+</script>

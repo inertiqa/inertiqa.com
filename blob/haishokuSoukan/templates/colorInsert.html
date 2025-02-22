@@ -1,0 +1,11 @@
+<form action="javascript:void(0)" onclick method="post">
+	<input id="color_name" type="text" name="formNameColor" value="" placeholder="Name for color to Insert UNIQUE">
+	<input id="color" type="color">UNIQUE
+	<button id="submit_color" type="submit" name="submit">Submit</button>
+</form>
+
+<script>
+	var submit = document.getElementById("submit_color");
+	submit.addEventListener("click", insertColor, false);
+</script>
+

@@ -1,0 +1,93 @@
+﻿<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="author" content="OOQQ" />
+		<meta name="revised" content="Tuesday, Jul 22th, 2020, 10:58:50 am" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+		<title>Real Time Moon Emojis - OOQQ</title>
+
+		<link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/minireset.css/0.0.2/minireset.min.css" integrity="sha512-uBLaY+6crwV4JAHILx0HWvYncrX7TXL770hqxly0ZsQ199v4lr2yNB2jiPMoxNajFPHSQnU80B1O8dJLujWZMg==" crossorigin="anonymous" as="style" onload="this.rel='stylesheet'" />
+		<base href="./">
+		<link rel="icon" type="image/svg+xml" href="../favicon.svg" type="image/x-icon" />
+		<link rel="alternate icon" href="../favicon.svg" type="image/x-icon" />
+		<link rel="stylesheet" href="../assets/style.min.css" type="text/css" media="all" />
+		<script defer src="../assets/scripts.min.js"></script>
+
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.20.0/prism.min.js" integrity="sha512-rYNMWcr8EuYc/6mSBu0wD+hSoA4KkHvYRlmJEJGQI4bsho0OiX8fPOVB822QQZizkTUdkUCnJLnN8SAUBg9y9w==" crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.21.0/plugins/autoloader/prism-autoloader.min.js" integrity="sha512-ROhjG07IRaPZsryG77+MVyx3ZT5q3sGEGENoGItwc9xgvx+dl+s3D8Ob1zPdbl/iKklMKp7uFemLJFDRw0bvig==" crossorigin="anonymous"></script>
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.20.0/themes/prism-tomorrow.min.css" integrity="sha512-SR4UXeuuhpoxkcnSd08+IU7VYA80Kfv9dyzEdM/gaRe+UwZn50BsQT6ZME/3vtIqeoxCBZQek6pfx2Q8QPszNg==" crossorigin="anonymous" />
+	</head>
+
+	<body>
+		<header id="top">
+			<h2><a href="../blog" title="Back to the blog archive" target="_self">&lt;&lt; rants</a></h2>
+			<h1>Real time Moon Emojis <span class="emoji">🌘</span></h1>
+			<p class="date" data-uid="2020-07-22T10:58:50"><small>days ago</small></p>
+		</header>
+
+		<main>
+			<p><a href="https://github.com/necronomimicon/necronomimi.com/blob/master/assets/scripts.js" target="_blank">Download from Github.</a></p>
+			<p>Ah, emoji, they are all the rage now. You need to insert them on your comments, on your replies, on yout titles, on everything!</p>
+			<p>I was like so many others before, but, then, one day, browsing <a href="https://getemoji.com/" target="_blank"> getemoji.com</a> again in search for a perfect emoji to decorate one of my blog posts with the typical minimum reach, I discovered a set of moon phases.</p>
+			<p>Time ago, I was using a planet earth on the index page just to symbolize the reach that computers brings to someone using a computer, but, <a href="img/20_07_22_putEmojisToGoodUse/OOOQMars.png" target="_blank">as interested as I am in Astronomy,</a> I just can not miss the chance to use the full set, and of course, to make it dynamically change was the obvious thing to do.</p>
+			<p>Time to dust off javascript!</p>
+			<p>The first step is obviously calculate the current moon phase, and, of course <a href="https://gist.github.com/endel/dfe6bb2fbe679781948c" target="_blank"> there is a gist that does exactly that.</a></p>
+			<p>We have the calculation, now it's just a matter of bring the result to the html, a feature easily acomplished with a couple of targeted selectors.</p>
+<pre><code class="lang-js">function setMoonEmoji() {
+  let d = new Date();
+  let moonPhase = getMoonPhase(d.getDate(), d.getMonth()+1, d.getFullYear());
+  let moonEmoji = document.querySelector('.themeEmoji');
+
+  switch(moonPhase) {
+    case 0:
+      moonEmoji.innerHTML = '🌑';
+      moonEmoji.title ='current Moon: New';
+      break;
+    case 1:
+      moonEmoji.innerHTML = '🌒';
+      moonEmoji.title ='current Moon: Waxing Crescent';
+      break;
+    case 2:
+      moonEmoji.innerHTML = '🌓';
+      moonEmoji.title ='current Moon: Quarter Crescent';
+      break;
+    case 3:
+      moonEmoji.innerHTML = '🌔';
+      moonEmoji.title ='current Moon: Waxing Gibbous';
+      break;
+    case 4:
+      moonEmoji.innerHTML = '🌕';
+      moonEmoji.title ='current Moon: Full';
+      break;
+    case 5:
+      moonEmoji.innerHTML = '🌖';
+      moonEmoji.title ='current Moon: Waning Gibbous';
+      break;
+    case 6:
+      moonEmoji.innerHTML = '🌗';
+      moonEmoji.title ='current Moon: Quarter Crepuscular';
+      break;
+    default:
+      moonEmoji.innerHTML = '🌘';
+      moonEmoji.title ='current Moon: Waning Crepuscular';
+      break;
+  }
+}</code></pre>
+			<p>And happy with the result.</p>
+			<p>I like to come and compare the calculation and the emoji with then actual phase of the real Moon, and so far it works beautiful :3.</p>
+			<p><a href="https://github.com/necronomimicon/necronomimi.com/blob/master/assets/scripts.js" target="_blank">Download from Github.</a></p>
+		</main>
+
+		<footer>
+			<ul class="footer">
+				<li><a href="../" title="Back to the index" target="_self">index</a></li>
+				<li><a href="../about.html" title="About mM" target="_self">about</a></li>
+				<li><a href="../blob" title="Back to the arts archive" target="_self">arts++</a></li>
+				<li><a href="../blog" title="Back to the rants archive" target="_self">rants++</a></li>
+				<li><a href="20_07_22_realtimeMoonEmojis.html#top" title="Back to top" target="_self">&uuarr; back to top</a></li>
+			</ul>
+		</footer>
+	</body>
+</html>

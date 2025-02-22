@@ -1,0 +1,81 @@
+﻿<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="author" content="OOQQ" />
+		<meta name="revised" content="Tuesday, Apr 04th, 2022, 10:58:50 am" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+		<title>Solving for The Illumination Problem - OOQQ</title>
+
+		<link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/minireset.css/0.0.2/minireset.min.css" integrity="sha512-uBLaY+6crwV4JAHILx0HWvYncrX7TXL770hqxly0ZsQ199v4lr2yNB2jiPMoxNajFPHSQnU80B1O8dJLujWZMg==" crossorigin="anonymous" as="style" onload="this.rel='stylesheet'" />
+		<base href="./">
+		<link rel="icon" type="image/svg+xml" href="../favicon.svg" type="image/x-icon" />
+		<link rel="alternate icon" href="../favicon.svg" type="image/x-icon" />
+		<link rel="stylesheet" href="../assets/style.min.css" type="text/css" media="all" />
+		<script defer src="../assets/scripts.min.js"></script>
+	</head>
+
+	<body>
+		<header id="top">
+			<h2><a href="../blog" title="Back to the blog archive" target="_self">&lt;&lt; rants</a></h2>
+			<h1>Solving for the Illumination Problem <span class="emoji">🔦</span></h1>
+			<p class="date" data-uid="2022-04-05T10:58:50"><small>days ago</small></p>
+		</header>
+
+		<main>
+			<p class="q"><q><a href="https://www.youtube.com/watch?v=xhj5er1k6GQ" target="_blank">The illumination problem</a> is a resolved mathematical problem first posed by Ernst Straus in the 1950s. Straus asked if a room with mirrored walls can always be illuminated by a single point light source, allowing for repeated reflection of light off the mirrored walls. Is there a shape possible such that there is a point where it is impossible to illuminate, assuming the reflections are infinite?.</q>
+				<br />
+				<a href="https://en.wikipedia.org/wiki/Illumination_problem" target="_blank"><i>Wikipedia</i></a>
+			</p>
+			<h3>Solving for areas of non-polygonal rooms</h3>
+			<p>In 1958 <a href="https://en.wikipedia.org/wiki/Roger_Penrose" target="_blank">Roger Penrose</a> used the properties of the ellipse to describe a room with curved walls that would always have dark regions, regardless of the position of the source. <i><b>Penrose unilluminable room</b></i> (unilluminated regions are indicated in gray).</p>
+			<img src="img/22_04_05_illuminationProblem/penroseRoom.svg" />
+			<p><b>My own solution;</b> Let's assume you have a circle where the light source lies at the geometrical centre of the circle. As a consequence, the rays from the source will irradiate outwards, hit the wall, and bounce back with a reflection angle of 0º.</p>
+			<p>Let's create another circle, that is tangentially external to the first one.<br /><br />
+			Since the room must be <i>connected</i>, let's join the two circles at the tangent point and make them a single shape. (open points are indicated with a hollow spot).<br /><br />
+			As long as the light source remains at one of the two geometric centers, the entire area of the other circle will always be in complete darkness, <i><b>except</b></i> for the single ray crossing the figure at the tangent point.</p>
+			<img src="img/22_04_05_illuminationProblem/tangentCircles.svg" />
+			<p>Since the circle nor the ellipse aren't regular polygons, the two demonstrations accomplish the same: That for a non-polygonal figure it may could be <i>spots <b>and</b> regions</i> that will not be illuminated.</p>
+			<h3>The Tokarsky Paper</h3>
+			<p>When dealing with regular polygons in the <b>Illumination Problem</b>, the general rules are:</p>
+			<ul>
+				<li>The angle of incidence equals the angle of reflection.</li>
+				<li>Rays of light always have length (nonzero).</li>
+				<li>A ray reaching a vertice does not reflect.</li>
+			</ul>
+			<p>George W. Tokarsky in a 1995 paper titled <a href="https://www.jstor.org/stable/2975263" target="_blank">Polygonal Rooms Not Illuminable from Every Point</a> demonstrated there exists an unilluminable spot on a polygonal 26-sided room. A <i><b>dark spot</b></i> which is not illuminable from the light soure in the room, even allowing for repeated reflections.</p>
+			<img src="img/22_04_05_illuminationProblem/tokarsky26.svg" />
+			<h3>Solving for points of polygonal rooms</h3>
+			<p>Now I will explain in layman terms the main <i><b>points</b> (heh)</i> in Tokarsky demonstration: In a right triangle, if the rules are to be followed, there's no such ray that will origin at vertice <i>A</i> that can bounce back to vertice <i>A</i>.</p>
+			<img src="img/22_04_05_illuminationProblem/tokarskyProof00.svg" />
+			<p>Therefore It's easy to see that if there's a orthographic grid where any point <i>A</i> is always surrounded by <i>B</i> points. As long as all surrounding <i>B</i> points are vertices, then there's no possible connection between any two points <i>A</i>.</p>
+			<p>As Tokarsky explains, <i>any</i> triangle cannot form a path that emanates from point <i>A</i> and came back to point <i>A</i> if:</p>
+			<ul>
+				<li>The angle at the origin is an integer (a rational angle).</li>
+				<li>The other two vertices <i>B</i> and <i>C</i> are different of 180º.</li>
+			</ul>
+			<p>Therefore any triangle that follows this rules, if mirrored along the oposite side of the light source (<i>B</i> &#8213; <i>C</i> Segment) will create a new <i>delta</i> shape. On this <i>delta</i> shape, light coming from vertice <i>A</i> cannot reach vertice <i>D</i> (or in the orthographic projection, another point <i>A</i>). This <i>delta</i> construction will come in handy for the next step of this demonstration.</p>
+			<img src="img/22_04_05_illuminationProblem/tokarskyProof01.svg" />
+			<h3>Solving for areas of polygonal rooms</h3>
+			<p><b>Lemma: </b><i>If in a polygon there's a point unreacheable for the light source, and such point is the only connection between two areas, then the entire area beyond the unreacheable point will also be unreacheable.</i></p>
+			<p><b>Proof: </b>At this point I'd like to re-introduce my <i>two circles</i> demonstration. But this time using the previous <i>delta</i> shape instead. A new shape can be created using two of these <i>deltas</i> joined together at the <i>open</i> vertice <i>D</i>.</p>
+			<p>And I'm sure that you would figured out already what you'll get:</p>
+			<img src="img/22_04_05_illuminationProblem/solvedPolygonArea.svg" />
+			<p>So if the Tokarsky demonstration of a <i><b>dark spot</b></i> is to be trusted, then this demonstration proves that there's at least a <i><b>special case</b></i> where a polygon can posess infinite dark spots and therefore <i><b>dark areas</b></i>. Which was previously considered to be impossible. (Lelièvre, Monteil & Weiss. 2016)</p>
+			<p><b>Q.E.D.</b></p>
+			<hr />
+			<p><b>As a sidenote,</b> Tokarsky also questions what could be the polygon with the smallest number of sides that contains a dark spot not placed on a vertice. This demonstration brings down the previous polygon sides from 24 (David Castro, 1997) to 8. But on my example the most distant vertice from the light source can also be removed, so <b>the minimum number of sides in a polygon that contains a dark spot (or area) is 7.</b></p>
+		</main>
+
+		<footer>
+			<ul class="footer">
+				<li><a href="../" title="Back to the index" target="_self">index</a></li>
+				<li><a href="../about.html" title="About Me" target="_self">about</a></li>
+				<li><a href="../blob" title="Back to the arts archive" target="_self">arts++</a></li>
+				<li><a href="../blog" title="Back to the rants archive" target="_self">rants++</a></li>
+				<li><a href="22_04_05_solvingForIlluminationProblem.html#top" title="Back to top" target="_self">&uuarr; back to top</a></li>
+			</ul>
+		</footer>
+	</body>
+</html>

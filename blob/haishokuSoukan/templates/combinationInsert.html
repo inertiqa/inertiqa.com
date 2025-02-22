@@ -1,0 +1,30 @@
+<form action="javascript:void(0)">
+	<input type="text" id="comb_name" placeholder="combination name UNIQUE">
+	<br>
+	<hr>
+	<label for="hex1">Color 1</label>
+	<select class="select-color" id="hex1"><option>-- Select a color --</option></select>
+	<br>
+	<hr>
+	<label for="hex2">Color 2</label>
+	<select class="select-color" id="hex2"><option>-- Select a color --</option></select>
+	<br>
+	<hr>
+	<label for="hex3">Color 3</label>
+	<select class="select-color" id="hex3"><option>-- Select a color --</option></select>
+	<br>
+	<hr>
+	<label for="hex4">Color 4</label>
+	<select class="select-color" id="hex4"><option>-- Select a color --</option></select>
+	<br>
+	<hr>
+	<button type="submit" id="submit_color" name="formSubmit">Submit</button>
+</form>
+
+<script>
+	readColors(db, listColorOption)
+	var submit = document.getElementById("submit_color");
+	submit.addEventListener("click", insertCombination, false);
+</script>
+
+

@@ -1,0 +1,471 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="256"
+   height="192"
+   viewBox="0 0 67.733332 50.800001"
+   version="1.1"
+   id="svg8"
+   inkscape:version="0.92.5 (2060ec1f9f, 2020-04-08)"
+   sodipodi:docname="zxScreen.svg">
+  <defs
+     id="defs2" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="1.8596257"
+     inkscape:cx="163.29088"
+     inkscape:cy="162.86212"
+     inkscape:document-units="mm"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     units="px"
+     inkscape:window-width="1920"
+     inkscape:window-height="1136"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1" />
+  <metadata
+     id="metadata5">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(0,-246.19998)"
+     style="display:inline">
+    <g
+       id="g2102"
+       transform="translate(-9.3373786,17.690596)">
+      <rect
+         y="228.50938"
+         x="9.3373804"
+         height="50.799999"
+         width="67.73333"
+         id="rect1784"
+         style="display:inline;opacity:1;fill:#c0c0c0;fill-opacity:1;stroke:none;stroke-width:4.90690088;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke markers fill" />
+      <g
+         transform="matrix(0.2143125,0,0,0.2143125,21.186715,272.51203)"
+         id="g897"
+         style="display:inline;overflow:scroll">
+        <rect
+           x="5"
+           y="1"
+           width="1"
+           height="1"
+           id="rect872" />
+        <rect
+           x="6"
+           y="6"
+           width="1"
+           height="1"
+           id="rect874" />
+        <rect
+           x="4"
+           y="4"
+           width="1"
+           height="1"
+           id="rect876" />
+        <rect
+           x="4"
+           y="2"
+           width="1"
+           height="1"
+           id="rect878" />
+        <polygon
+           points="1,7 2,7 2,4 4,4 4,3 2,3 2,1 1,1 "
+           id="polygon880" />
+        <rect
+           x="5"
+           y="5"
+           width="1"
+           height="1"
+           id="rect882" />
+      </g>
+      <g
+         transform="matrix(0.2143125,0,0,0.2143125,22.844277,272.51113)"
+         id="g912"
+         style="display:inline;overflow:scroll">
+        <rect
+           x="4"
+           y="5"
+           width="1"
+           height="2"
+           id="rect899" />
+        <rect
+           x="3"
+           y="7"
+           width="1"
+           height="1"
+           id="rect901" />
+      </g>
+      <g
+         transform="matrix(0.2143125,0,0,0.2143125,26.277257,272.51203)"
+         id="g927"
+         style="display:inline;overflow:scroll">
+        <rect
+           x="2"
+           y="2"
+           width="1"
+           height="1"
+           id="rect914" />
+        <polygon
+           points="4,2 4,6 2,6 2,7 7,7 7,6 5,6 5,1 3,1 3,2 "
+           id="polygon916" />
+      </g>
+      <g
+         transform="matrix(0.2143125,0,0,0.2143125,31.357164,272.51203)"
+         id="g942"
+         style="display:inline;overflow:scroll">
+        <rect
+           x="2"
+           y="3"
+           width="1"
+           height="1"
+           id="rect929" />
+        <polygon
+           points="5,1 4,1 4,2 3,2 3,3 4,3 4,5 2,5 2,4 1,4 1,6 4,6 4,7 5,7 5,6 7,6 7,5 5,5 "
+           id="polygon931" />
+      </g>
+      <g
+         transform="matrix(0.2143125,0,0,0.2143125,29.639591,272.51203)"
+         id="g957"
+         style="display:inline;overflow:scroll">
+        <rect
+           x="3"
+           y="6"
+           width="1"
+           height="1"
+           id="rect944" />
+        <rect
+           x="3"
+           y="3"
+           width="1"
+           height="1"
+           id="rect946" />
+      </g>
+      <g
+         transform="matrix(0.21166666,0,0,0.21166666,16.098533,233.5418)"
+         id="g969"
+         style="display:inline;overflow:scroll">
+        <polygon
+           points="6,7 7,7 7,1 6,1 6,3 2,3 2,1 1,1 1,7 2,7 2,4 6,4 "
+           id="polygon959" />
+      </g>
+      <g
+         transform="matrix(0.21166666,0,0,0.21166666,17.81365,233.5418)"
+         id="g990"
+         style="display:inline;overflow:scroll">
+        <rect
+           x="2"
+           y="6"
+           width="4"
+           height="1"
+           id="rect971" />
+        <rect
+           x="5"
+           y="3"
+           width="1"
+           height="1"
+           id="rect973" />
+        <rect
+           x="2"
+           y="2"
+           width="3"
+           height="1"
+           id="rect975" />
+        <polygon
+           points="1,6 2,6 2,5 5,5 5,4 2,4 2,3 1,3 "
+           id="polygon977" />
+      </g>
+      <g
+         transform="matrix(0.21166666,0,0,0.21166666,31.339686,233.5418)"
+         id="g1005"
+         style="display:inline;overflow:scroll">
+        <rect
+           x="4"
+           y="6"
+           width="2"
+           height="1"
+           id="rect992" />
+        <rect
+           x="3"
+           y="1"
+           width="1"
+           height="5"
+           id="rect994" />
+      </g>
+      <g
+         transform="matrix(0.21166666,0,0,0.21166666,16.098533,272.52786)"
+         id="g1429"
+         style="display:inline;overflow:scroll">
+        <polygon
+           points="2,2 1,2 1,6 2,6 2,7 6,7 6,6 3,6 3,5 2,5 "
+           id="polygon1410" />
+        <rect
+           x="4"
+           y="3"
+           width="1"
+           height="1"
+           id="rect1412" />
+        <rect
+           x="3"
+           y="4"
+           width="1"
+           height="1"
+           id="rect1414" />
+        <polygon
+           points="2,2 5,2 5,3 6,3 6,6 7,6 7,2 6,2 6,1 2,1 "
+           id="polygon1416" />
+      </g>
+      <g
+         transform="matrix(0.2143125,0,0,0.2143125,19.48887,272.51203)"
+         id="g1450-5"
+         style="display:inline;overflow:scroll">
+        <rect
+           x="2"
+           y="1"
+           width="4"
+           height="1"
+           id="rect1431-6" />
+        <rect
+           x="1"
+           y="2"
+           width="1"
+           height="4"
+           id="rect1433-2" />
+        <rect
+           x="2"
+           y="6"
+           width="4"
+           height="1"
+           id="rect1435-9" />
+        <rect
+           x="6"
+           y="2"
+           width="1"
+           height="4"
+           id="rect1437-1" />
+      </g>
+      <g
+         transform="matrix(0.21166666,0,0,0.21166666,27.982764,272.51467)"
+         id="g1429-2"
+         style="display:inline;overflow:scroll">
+        <polygon
+           points="3,5 2,5 2,2 1,2 1,6 2,6 2,7 6,7 6,6 3,6 "
+           id="polygon1410-7" />
+        <rect
+           x="4"
+           y="3"
+           width="1"
+           height="1"
+           id="rect1412-0" />
+        <rect
+           x="3"
+           y="4"
+           width="1"
+           height="1"
+           id="rect1414-9" />
+        <polygon
+           points="6,1 2,1 2,2 5,2 5,3 6,3 6,6 7,6 7,2 6,2 "
+           id="polygon1416-3" />
+      </g>
+      <g
+         transform="matrix(0.21166666,0,0,0.21166666,19.491436,233.5418)"
+         id="g1005-2"
+         style="display:inline;overflow:scroll">
+        <rect
+           x="4"
+           y="6"
+           width="2"
+           height="1"
+           id="rect992-3" />
+        <rect
+           x="3"
+           y="1"
+           width="1"
+           height="5"
+           id="rect994-7" />
+      </g>
+      <g
+         transform="matrix(0.21166666,0,0,0.21166666,21.189876,233.5418)"
+         id="g1005-2-5"
+         style="display:inline;overflow:scroll">
+        <rect
+           x="4"
+           y="6"
+           width="2"
+           height="1"
+           id="rect992-3-9" />
+        <rect
+           x="3"
+           y="1"
+           width="1"
+           height="5"
+           id="rect994-7-2" />
+      </g>
+      <g
+         transform="matrix(0.21166666,0,0,0.21166666,22.877674,233.5418)"
+         id="g1041"
+         style="display:inline;overflow:scroll">
+        <rect
+           x="1"
+           y="3"
+           width="1"
+           height="3"
+           id="rect1022" />
+        <rect
+           x="2"
+           y="6"
+           width="3"
+           height="1"
+           id="rect1024" />
+        <rect
+           x="2"
+           y="2"
+           width="3"
+           height="1"
+           id="rect1026" />
+        <rect
+           x="5"
+           y="3"
+           width="1"
+           height="3"
+           id="rect1028" />
+      </g>
+      <g
+         transform="matrix(0.21166666,0,0,0.21166666,27.964104,233.5418)"
+         id="g1041-28"
+         style="display:inline;overflow:scroll">
+        <rect
+           x="1"
+           y="3"
+           width="1"
+           height="3"
+           id="rect1022-9" />
+        <rect
+           x="2"
+           y="6"
+           width="3"
+           height="1"
+           id="rect1024-7" />
+        <rect
+           x="2"
+           y="2"
+           width="3"
+           height="1"
+           id="rect1026-3" />
+        <rect
+           x="5"
+           y="3"
+           width="1"
+           height="3"
+           id="rect1028-6" />
+      </g>
+      <g
+         transform="matrix(0.21166666,0,0,0.21166666,26.27543,233.5418)"
+         id="g1065"
+         style="display:inline;overflow:scroll">
+        <rect
+           x="5"
+           y="6"
+           width="1"
+           height="1"
+           id="rect1043" />
+        <rect
+           x="2"
+           y="6"
+           width="1"
+           height="1"
+           id="rect1045" />
+        <rect
+           x="1"
+           y="1"
+           width="1"
+           height="5"
+           id="rect1047" />
+        <rect
+           x="3"
+           y="5"
+           width="2"
+           height="1"
+           id="rect1049" />
+        <rect
+           x="6"
+           y="1"
+           width="1"
+           height="5"
+           id="rect1051" />
+      </g>
+      <g
+         transform="matrix(0.21166666,0,0,0.21166666,29.640261,233.5418)"
+         id="g1101"
+         style="display:inline;overflow:scroll">
+        <rect
+           x="3"
+           y="2"
+           width="3"
+           height="1"
+           id="rect1088" />
+        <rect
+           x="2"
+           y="3"
+           width="1"
+           height="4"
+           id="rect1090" />
+      </g>
+      <g
+         transform="matrix(0.21166666,0,0,0.21166666,33.05093,233.5418)"
+         id="g1131"
+         style="display:inline;overflow:scroll">
+        <rect
+           x="1"
+           y="4"
+           width="1"
+           height="2"
+           id="rect1118" />
+        <polygon
+           points="6,1 5,1 5,3 2,3 2,4 5,4 5,6 2,6 2,7 6,7 "
+           id="polygon1120" />
+      </g>
+      <g
+         transform="matrix(0.21166666,0,0,0.21166666,34.733795,233.53715)"
+         id="g1146"
+         style="display:inline">
+        <rect
+           x="3"
+           y="6.0219998"
+           width="1"
+           height="1"
+           id="rect1133" />
+        <rect
+           x="3"
+           y="1.022"
+           width="1"
+           height="4"
+           id="rect1135" />
+      </g>
+    </g>
+  </g>
+</svg>

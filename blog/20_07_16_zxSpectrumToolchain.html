@@ -1,0 +1,68 @@
+﻿<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="author" content="OOQQ" />
+		<meta name="revised" content="Thursday, Jul 16th, 2020, 10:58:50 am" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+		<title>ZX Spectrum Toolchain - OOQQ</title>
+
+		<link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/minireset.css/0.0.2/minireset.min.css" integrity="sha512-uBLaY+6crwV4JAHILx0HWvYncrX7TXL770hqxly0ZsQ199v4lr2yNB2jiPMoxNajFPHSQnU80B1O8dJLujWZMg==" crossorigin="anonymous" as="style" onload="this.rel='stylesheet'" />
+		<base href="./">
+		<link rel="icon" type="image/svg+xml" href="../favicon.svg" type="image/x-icon" />
+		<link rel="alternate icon" href="../favicon.svg" type="image/x-icon" />
+		<link rel="stylesheet" href="../assets/style.min.css" type="text/css" media="all" />
+		<script defer src="../assets/scripts.min.js"></script>
+
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.20.0/prism.min.js" integrity="sha512-rYNMWcr8EuYc/6mSBu0wD+hSoA4KkHvYRlmJEJGQI4bsho0OiX8fPOVB822QQZizkTUdkUCnJLnN8SAUBg9y9w==" crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.21.0/plugins/autoloader/prism-autoloader.min.js" integrity="sha512-ROhjG07IRaPZsryG77+MVyx3ZT5q3sGEGENoGItwc9xgvx+dl+s3D8Ob1zPdbl/iKklMKp7uFemLJFDRw0bvig==" crossorigin="anonymous"></script>
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.20.0/themes/prism-tomorrow.min.css" integrity="sha512-SR4UXeuuhpoxkcnSd08+IU7VYA80Kfv9dyzEdM/gaRe+UwZn50BsQT6ZME/3vtIqeoxCBZQek6pfx2Q8QPszNg==" crossorigin="anonymous" />
+	</head>
+
+	<body>
+		<header id="top">
+			<h2><a href="../blog" title="Back to the blog archive" target="_self">&lt;&lt; rants</a></h2>
+			<h1>ZX Spectrum ASM toolchain <span class="emoji">📼</span></h1>
+			<p class="date" data-uid="2020-07-16T10:58:50"><small>days ago</small></p>
+		</header>
+
+		<main>
+			<p>MAYBE someday you waked up from bed, and thought to yourself: <i>"Wouldn't be cool to program for the ZX Spectrum?"</i>. After all, if you are aboard this <i>computer stuff</i> as long as I do, probably you are not alien to the concept of BASIC of even Machine Code.</p>
+			<p>Recently there was quite an interesting community raising on youtube, the <a href="https://www.youtube.com/channel/UC8t99gp5IN-FTf5rGVaRevw" target="_blank">Chibi Akumas programming channel</a> (and the obligatory discord server). The guy not only teaches asm on the ZX Spectrum, but pretty much on every machine under the sun.</p>
+			<p>Well programming on the ZX Spectrum always felt like a loose string on my agenda, and the videos seemed comprehensive enough to give it a try (again...). But!.</p>
+			<p>The toolchain felt extremely convoluted. There was no easy way to make the computer run your neat asm code straight away. Not to mention using quite a few external libraries <i>and</i> a couple of programs more to bring the assembled bytecode to executable format for your emulator (or real device with everdrive...) to run.</p>
+			<p>As it usually happens, it was somehow easier to do than expected. The biggest mistake was to use a generic compiler instead of a specific ZX Spectrum compiler. After testing out pretty much anything I could found, <a href="https://github.com/sjasmplus/sjasmplus/wiki" target="_blank">SjASMPlus</a> and <a href="http://pasmo.speccy.org/" target="_blank">Pasmo</a> were the only challengers left.</p>
+			<p>I tried really hard to make Pasmo work since it's an original work from another fellow Spanish dude :p. But the compiler just straight out refused to create the executable file for the emulator to run, so I just surrended that end and moved on.</p>
+			<p>But, SjASMPlus... oh boy, it worked <i>on the first try</i>.</p>
+			<p>Everything can be placed inside main.asm and just place handy compiler directive at the end of the file to create a useful executable:</p>
+<pre><code class="lang-asm6502">org $8000						;code origin
+
+start:
+ld hl, string					;address of string
+
+[...]
+
+string: db "Hello World!", 0
+
+SAVETAP "../release/tape.tap", start
+;save tape file, autolaunch start address is $8000</code></pre>
+			<p>And it delivers a sweet .tap file! No external programs or anything. Now with a working executable at hand, its just a matter of feeding it to <a href="http://fuse-emulator.sourceforge.net/" target="_blank">Fuse</a> via your typical commands script:</p>
+			<pre><code class="lang-batch">emulator\fuse.exe --machine 48 --tape release\tape.tap -g 2x</code></pre>
+			<p>And sure enough:</p>
+			<img src="img/20_07_16_zxSpectrumToolchain/helloWorldZXSpectrum.svg" />
+			<p>It's still true that debugging asm code through an open source emulator is quite a step up for the average programmer student, but now setup is a breeze. And from my days learning C, the last thing you want to deal with when learning a new language are hellish toolchains.</p>
+			<p>Now let's see if I can program <i>that game</i> on the ZX Spectrum at last. Surely this wouldn't be the last time talking about ZX Spectrum programming around here...</p>
+		</main>
+
+		<footer>
+			<ul class="footer">
+				<li><a href="../" title="Back to the index" target="_self">index</a></li>
+				<li><a href="../about.html" title="About mM" target="_self">about</a></li>
+				<li><a href="../blob" title="Back to the arts archive" target="_self">arts++</a></li>
+				<li><a href="../blog" title="Back to the rants archive" target="_self">rants++</a></li>
+				<li><a href="20_07_16_zxSpectrumToolchain.html#top" title="Back to top" target="_self">&uuarr; back to top</a></li>
+			</ul>
+		</footer>
+	</body>
+</html>

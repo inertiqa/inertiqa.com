@@ -1,0 +1,11 @@
+<form action="javascript:void(0)">
+	<input type="text" id="color_name_old" placeholder="Antiguo nombre del Color a Actualizar">
+	<input type="text" id="color_name_new" placeholder="Nuevo nombre del Color a Actualizar">
+	<input type="color" id="color">UNIQUE
+	<button type="submit" id="submit">Submit</button>
+</form>
+<script>
+	var submit = document.getElementById("submit");
+	submit.addEventListener('click', updateColor, false);
+</script>
+

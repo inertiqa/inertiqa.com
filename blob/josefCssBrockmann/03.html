@@ -1,0 +1,163 @@
+﻿<!doctype html>
+<html lang="en">
+	<head>
+        <meta charset="utf-8" />
+        <meta name="author" content="OOQQ" />
+        <meta name="revised" content="Sunday, Apr 24th, 2016, 10:58:50 am" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"  />
+
+		<title>Josef Müller-Brockmann on CSS3 - OOQQ</title>
+
+		<link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/minireset.css/0.0.2/minireset.min.css" integrity="sha512-uBLaY+6crwV4JAHILx0HWvYncrX7TXL770hqxly0ZsQ199v4lr2yNB2jiPMoxNajFPHSQnU80B1O8dJLujWZMg==" crossorigin="anonymous" as="style" onload="this.rel='stylesheet'" />
+		<base href="./">
+        <link rel="icon" type="image/svg+xml" href="../../favicon.svg" type="image/x-icon" />
+        <link rel="alternate icon" href="../../favicon.png" type="image/x-icon" />
+
+        <style>
+body{
+    font-family:sans-serif;
+    background-color:gainsboro;
+    font-weight:700;
+    max-width:968px;
+    margin:2em auto 1em
+}
+ul{
+    display:-webkit-box;
+    display:-ms-flexbox;
+    display:flex;
+    -webkit-box-orient:vertical;
+    -webkit-box-direction:normal;
+    -ms-flex-direction:column;
+    flex-direction:column;
+    padding:0;
+    counter-reset:li
+}
+ul>li:before{
+    content:counter(li);
+    counter-increment:li;
+    font-size:2.1em
+}
+ul>li:nth-child(6):before{
+    content:none
+}
+li{
+    list-style:none;
+    margin-bottom:1.66em
+}
+ul li:nth-child(1){
+    color:gold
+}
+ul li:nth-child(2){
+    color:violet
+}
+ul li:nth-child(3){
+    color:#00bfff
+}
+ul li:nth-child(4){
+    color:orange
+}
+ul li:nth-child(5){
+    color:#7b68ee
+}
+ul li:nth-child(6){
+    color:#20b2aa
+}
+header{
+    border-bottom:4px solid #000;
+    padding-bottom:1em;
+    margin-bottom:4em
+}
+section{
+    margin-bottom:2em
+}
+p{
+    font-size:2em;
+    margin:0;
+    letter-spacing:-1.5px;
+    line-height:1em;
+    display:inline-block
+}
+.info{
+    font-size:xx-small;
+    letter-spacing:normal
+}
+a{
+    -webkit-text-decoration:reset;
+    text-decoration:reset;
+    color:inherit
+}
+a:hover{
+    text-decoration:none
+}
+@media (max-width:1000px){
+    body{
+        max-width:90vw
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+		<p>internationale juni-festwochen 1965 zürich</p>
+		<p>konzerte der tonhalle-gesellschaft</p>
+</header>
+
+<section>
+<ul>
+		<li>
+		<p class="date">. konzert - dienstag, den 1. juni, 20.15 uhr</p>
+		<p class="musicians">leitung&nbsp;&nbsp;&nbsp;robert f.denzler, solist&nbsp;&nbsp;&nbsp;zino francescatti</p>
+		<p class="piece">beethoven&nbsp;&nbsp;&nbsp;dritte leonoren-ouvertüre</p>
+		<p class="piece">brahms&nbsp;&nbsp;&nbsp;violinkonzert d-dur, strawinski&nbsp;&nbsp;&nbsp;feuervogel-suite</p>
+</li>
+
+<li>
+		<p class="date">. konzert - donnerstag, den 10. juni, 20.15 uhr</p>
+		<p class="musicians">leitung&nbsp;&nbsp;&nbsp;eugene ormandy, solist&nbsp;&nbsp;&nbsp;isaac stern</p>
+		<p class="piece">weber&nbsp;&nbsp;&nbsp;ouvertüre zur oper "der freischütz"</p>
+		<p class="piece">dvorak&nbsp;&nbsp;&nbsp;violinkonzert a-moll, brahms&nbsp;&nbsp;&nbsp;zweite sinfonie d-dur</p>
+</li>
+
+<li>
+		<p class="date">. konzert - dienstag, den 15. juni, 20.15 uhr</p>
+		<p class="musicians">leitung&nbsp;&nbsp;&nbsp;alceo galliera, solist&nbsp;&nbsp;&nbsp;arthur rubinstein</p>
+		<p class="piece">beethoven&nbsp;&nbsp;&nbsp;fünfest klavierkonzert in es-dur</p>
+		<p class="piece">mahler&nbsp;&nbsp;&nbsp;erste sinfonie in d-dur</p>
+</li>
+
+<li>
+		<p class="date">. konzert - dienstag, den 22. juni, 20.15 uhr</p>
+		<p class="musicians">leitung&nbsp;&nbsp;&nbsp;zubin mehta, solist&nbsp;&nbsp;&nbsp;claudio arrau</p>
+		<p class="piece">webern&nbsp;&nbsp;&nbsp;sechs orchesterstücke, liszt&nbsp;&nbsp;&nbsp;klavierkonzert a-dur</p>
+		<p class="piece">tchaikowsky&nbsp;&nbsp;&nbsp;fünfte sinfonie in e-moll</p>
+</li>
+
+<li>
+		<p class="date">. konzert - dienstag, den 29. juni, 20.15 uhr</p>
+		<p class="date">mittwoch, den 30. juni, 20.15 uhr</p>
+		<p class="musicians">leitung&nbsp;&nbsp;&nbsp;rudolf kempe, solisten: gundula janowitz&nbsp;&nbsp;&nbsp;sopran</p>
+		<p class="musicians">margrit conrad &nbsp;&nbsp;&nbsp;alt, ernst häfliger&nbsp;&nbsp;&nbsp;tenor, kim borg&nbsp;&nbsp;&nbsp;bass</p>
+		<p class="musicians">chor&nbsp;&nbsp;&nbsp;gemischter chor zürich</p>
+		<p class="piece">beethoven&nbsp;&nbsp;&nbsp;neunte sinfonie in d-moll</p>
+</li>
+
+<li>
+		<p class="date">extra-kammermusikabend</p>
+		<p class="date">donnerstag, den 17. juni, 20.15 uhr</p>
+		<p class="piece">gedenkkonzert zum 10. todestag von willy burkhard</p>
+		<p class="piece">tonhalle-quartett, ursula buckel&nbsp;&nbsp;&nbsp;sopran</p>
+		<p class="piece">ursula burkhard&nbsp;&nbsp;&nbsp;flöte, simon burkhard&nbsp;&nbsp;&nbsp;klavier</p>
+		<p class="piece">willy burkhard: zweites streichquartett, herbst-kantate</p>
+		<p class="piece">neun morgenstern-lieder, lyrische musik</p>
+</li>
+</ul>
+</section>
+
+<footer>
+    <p class="info"><a href="../" target="_self">go back to the index</a></p>
+</footer>
+
+</body>
+</html>

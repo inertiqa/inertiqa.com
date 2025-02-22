@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="author" content="OOQQ" />
+		<meta name="revised" content="Wednesday, Sun 08th, 2020, 10:58:50 am" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+		<title>Doom 3 Title Menu - OOQQ</title>
+
+		<link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/minireset.css/0.0.2/minireset.min.css" integrity="sha512-uBLaY+6crwV4JAHILx0HWvYncrX7TXL770hqxly0ZsQ199v4lr2yNB2jiPMoxNajFPHSQnU80B1O8dJLujWZMg==" crossorigin="anonymous" as="style" onload="this.rel='stylesheet'" />
+		<base href="./">
+		<link rel="icon" type="image/svg+xml" href="../../favicon.svg" type="image/x-icon" />
+		<link rel="alternate icon" href="../../favicon.png" type="image/x-icon" />
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r119/three.min.js" integrity="sha512-E1+SnTWyHYoY5MN8wpL0SI4TYbpWN12sHXyEViwbzzEyq6GHxQrPFDzEeUDab4emXcf3Yj41Tht2JZnpo3kjwA==" crossorigin="anonymous"></script>
+
+		<style>html{overflow:hidden}body{margin:0}</style>
+	</head>
+
+	<body></body>
+
+<script>
+let SCREEN_WIDTH = window.innerWidth;
+let SCREEN_HEIGHT = window.innerHeight;
+let aspect = SCREEN_WIDTH / SCREEN_HEIGHT;
+
+let container;
+let camera, scene, renderer, mars;
+let cameraRig, activeCamera, activeHelper;
+let cameraPerspective, cameraOrtho;
+let cameraPerspectiveHelper, cameraOrthoHelper;
+let frustumSize = 600;
+
+init();
+animate();
+
+function init() {
+	container = document.createElement('div');
+	document.body.appendChild( container );
+
+	scene = new THREE.Scene();
+
+	camera = new THREE.PerspectiveCamera( 1, 1, 1, 1000 ); //fov, aspect, near clip, far clip
+	camera.position.z = 2500;
+
+	cameraPerspective = new THREE.PerspectiveCamera( 50, 1, 1, 1000 );
+
+	cameraPerspectiveHelper = new THREE.CameraHelper( cameraPerspective );
+	scene.add( cameraPerspectiveHelper );
+
+	cameraOrtho = new THREE.OrthographicCamera( 0.5 * frustumSize * aspect / - 2, 0.5 * frustumSize * aspect / 2, frustumSize / 2, frustumSize / - 2, 150, 1000 );
+	cameraOrthoHelper = new THREE.CameraHelper( cameraOrtho );
+	scene.add( cameraOrthoHelper );
+
+	activeCamera = cameraPerspective;
+	activeHelper = cameraPerspectiveHelper;
+
+// counteract different front orientation of cameras vs rig
+	cameraOrtho.rotation.y = Math.PI;
+	cameraPerspective.rotation.y = Math.PI;
+
+	cameraRig = new THREE.Group();
+
+	cameraRig.add( cameraPerspective );
+	cameraRig.add( cameraOrtho );
+
+	scene.add( cameraRig );
+
+//geometrias
+	mars = new THREE.Mesh(
+		new THREE.SphereBufferGeometry( 100, 16, 8 ),
+		new THREE.MeshBasicMaterial( { color: 0xff0000, wireframe: true } )
+	);
+	scene.add( mars );
+
+	let atmosfear = new THREE.Mesh(
+		new THREE.SphereBufferGeometry( 105, 16, 8 ),
+		new THREE.MeshBasicMaterial( { color: 0xffffff, wireframe: true } )
+	);
+	mars.add( atmosfear );
+
+// el fondo de estrellas son 10.000 particulas aleatorias
+	let geometry = new THREE.BufferGeometry();
+	let vertices = [];
+
+	for (let i = 0; i < 10000; i ++) {
+		vertices.push( THREE.MathUtils.randFloatSpread( 2000 ) ); // x
+		vertices.push( THREE.MathUtils.randFloatSpread( 2000 ) ); // y
+		vertices.push( THREE.MathUtils.randFloatSpread( 2000 ) ); // z
+	}
+
+	geometry.setAttribute( 'position', new THREE.Float32BufferAttribute( vertices, 3 ) );
+
+	let stars = new THREE.Points( geometry, new THREE.PointsMaterial( { color: 0x888888 } ) );
+	scene.add( stars ); //stars end
+
+//renderer
+	renderer = new THREE.WebGLRenderer( { antialias: false } );
+	renderer.setPixelRatio( window.devicePixelRatio );
+	renderer.setSize( SCREEN_WIDTH, SCREEN_HEIGHT );
+	container.appendChild( renderer.domElement );
+
+	renderer.autoClear = false;
+
+	window.addEventListener( 'resize', onWindowResize, false );
+	document.addEventListener( 'keydown', onKeyDown, false );
+}//init end
+
+//keypress
+function onKeyDown( event ) {
+	switch ( event.keyCode ) {
+		case 79: /*O*/
+			activeCamera = cameraOrtho;
+			activeHelper = cameraOrthoHelper;
+	break;
+		case 80: /*P*/
+			activeCamera = cameraPerspective;
+			activeHelper = cameraPerspectiveHelper;
+	break;
+	}
+}
+
+//windowResize
+function onWindowResize() {
+	SCREEN_WIDTH = window.innerWidth;
+	SCREEN_HEIGHT = window.innerHeight;
+	aspect = SCREEN_WIDTH / SCREEN_HEIGHT;
+
+	renderer.setSize( SCREEN_WIDTH, SCREEN_HEIGHT );
+
+	camera.aspect = 1 * aspect;
+	camera.updateProjectionMatrix();
+
+	cameraPerspective.aspect = 0.5 * aspect;
+	cameraPerspective.updateProjectionMatrix();
+
+	cameraOrtho.left = - 0.5 * frustumSize * aspect / 2;
+	cameraOrtho.right = 0.5 * frustumSize * aspect / 2;
+	cameraOrtho.top = frustumSize / 2;
+	cameraOrtho.bottom = - frustumSize / 2;
+	cameraOrtho.updateProjectionMatrix();
+}
+
+//animate
+function animate() {
+	requestAnimationFrame( animate );
+	render();
+}
+
+//renderer
+function render() {
+	let r = Date.now() * 0.0005;
+
+	mars.position.x = 700 * Math.cos( r );
+	mars.position.z = 700 * Math.sin( r );
+	mars.position.y = 700 * Math.sin( r );
+
+	if ( activeCamera === cameraPerspective ) {
+		cameraPerspective.fov = 35 + 30 * Math.sin( 0.5 * r );
+		cameraPerspective.far = mars.position.length();
+		cameraPerspective.updateProjectionMatrix();
+
+		cameraPerspectiveHelper.update();
+		cameraPerspectiveHelper.visible = true;
+
+		cameraOrthoHelper.visible = false;
+	} else {
+		cameraOrtho.far = mars.position.length();
+		cameraOrtho.updateProjectionMatrix();
+
+		cameraOrthoHelper.update();
+		cameraOrthoHelper.visible = true;
+
+		cameraPerspectiveHelper.visible = false;
+	}
+
+	cameraRig.lookAt( mars.position );
+
+	renderer.clear();
+	activeHelper.visible = false;
+	renderer.setViewport( 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT );
+	renderer.render( scene, activeCamera );
+
+	//activeHelper.visible = true;
+	//renderer.setViewport( SCREEN_WIDTH / 2, 0, SCREEN_WIDTH / 2, SCREEN_HEIGHT );
+	//renderer.render( scene, camera );
+}
+</script>
+</html>

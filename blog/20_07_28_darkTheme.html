@@ -1,0 +1,63 @@
+﻿<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="author" content="OOQQ" />
+		<meta name="revised" content="Wednesday, Jul 28th, 2020, 10:58:50 am" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+		<title>Introducing Dark Mode - OOQQ</title>
+
+		<link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/minireset.css/0.0.2/minireset.min.css" integrity="sha512-uBLaY+6crwV4JAHILx0HWvYncrX7TXL770hqxly0ZsQ199v4lr2yNB2jiPMoxNajFPHSQnU80B1O8dJLujWZMg==" crossorigin="anonymous" as="style" onload="this.rel='stylesheet'" />
+		<base href="./">
+		<link rel="icon" type="image/svg+xml" href="../favicon.svg" type="image/x-icon" />
+		<link rel="alternate icon" href="../favicon.svg" type="image/x-icon" />
+		<link rel="stylesheet" href="../assets/style.min.css" type="text/css" media="all" />
+		<script defer src="../assets/scripts.min.js"></script>
+
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.20.0/prism.min.js" integrity="sha512-rYNMWcr8EuYc/6mSBu0wD+hSoA4KkHvYRlmJEJGQI4bsho0OiX8fPOVB822QQZizkTUdkUCnJLnN8SAUBg9y9w==" crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.21.0/plugins/autoloader/prism-autoloader.min.js" integrity="sha512-ROhjG07IRaPZsryG77+MVyx3ZT5q3sGEGENoGItwc9xgvx+dl+s3D8Ob1zPdbl/iKklMKp7uFemLJFDRw0bvig==" crossorigin="anonymous"></script>
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.20.0/themes/prism-tomorrow.min.css" integrity="sha512-SR4UXeuuhpoxkcnSd08+IU7VYA80Kfv9dyzEdM/gaRe+UwZn50BsQT6ZME/3vtIqeoxCBZQek6pfx2Q8QPszNg==" crossorigin="anonymous" />
+	</head>
+
+	<body>
+		<header id="top">
+			<h2><a href="../blog" title="Back to the blog archive" target="_self">&lt;&lt; rants</a></h2>
+			<h1>How I do the dark side <span class="emoji">🌃</span></h1>
+			<p class="date" data-uid="2020-07-28T10:58:50"><small>days ago</small></p>
+		</header>
+
+		<main>
+			<p>A typical <a href="https://www.reddit.com/r/css/comments/hy54p3/the_simplest_css_variable_dark_mode_theme/" target="_blank">random reddit article</a> pops once in a while, and gives you a chance to improve an existing design. This time, it was a dude claiming to create the most simplest dark theme changer, complete with localStorage and everything. And after a read I came to my own conclussions.</p>
+			<p>1. If you need the user to manually set the entire OS to dark theme, then you already lost.</p>
+			<p>2. If you place a manual theme changer on your page, you already disqualified your OS dark theme implementation.</p>
+			<p>Anyway, since my index site sports a <a href="20_07_22_realtimeMoonEmojis.html" target="_self">real time emoji moon phaser</a> on it, lets make the emoji be the dark theme changer:</p>
+<pre><code class="lang-js">document.querySelector('.moonEmoji').addEventListener('mouseenter', function (e) { //mouse over button
+  document.querySelector('.moonEmoji').style.cursor = 'pointer';
+    });
+
+    if (localStorage.getItem('darkTheme')) { //everything ok, change the emoji
+      setDarkEmoji();
+    } else {
+      setLightEmoji();
+    }
+  }
+}
+</code></pre>
+			<p>And since we need the behaviour to propagate for the entire site, the only way to store the state without a database is using something like <i>localStorage</i> to store it. Well played <a href="https://lukelowrey.com/css-variable-theme-switcher/" target="_blank">Luke Lowrey!.</a></p>
+			<p>Now you may be wondering: Why didn't you implemented the css specific dark theme listener? Well, it's pretty much because I developed the entire theme changer and I'd like people to use it, plain and simple. But it's true it's most convenient to get dark by default.</p>
+			<p><i>Oh well</i> maybe later...</p>
+			<p><a href="https://github.com/necronomimicon/necronomimi.com/blob/master/assets/scripts.js" target="_blank">Download from Github.</a></p>
+		</main>
+
+		<footer>
+			<ul class="footer">
+				<li><a href="../" title="Back to the index" target="_self">index</a></li>
+				<li><a href="../about.html" title="About mM" target="_self">about</a></li>
+				<li><a href="../blob" title="Back to the arts archive" target="_self">arts++</a></li>
+				<li><a href="../blog" title="Back to the rants archive" target="_self">rants++</a></li>
+				<li><a href="20_07_28_darkTheme.html#top" title="Back to top" target="_self">&uuarr; back to top</a></li>
+			</ul>
+		</footer>
+	</body>
+</html>

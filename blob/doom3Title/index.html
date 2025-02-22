@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="en">
+	<head>
+    <meta charset="utf-8" />
+		<meta name="author" content="OOQQ" />
+		<meta name="revised" content="Wednesday, Sun 08th, 2020, 10:58:50 am" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+		<title>Doom 3 Title Menu - OOQQ</title>
+
+		<link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/minireset.css/0.0.2/minireset.min.css" integrity="sha512-uBLaY+6crwV4JAHILx0HWvYncrX7TXL770hqxly0ZsQ199v4lr2yNB2jiPMoxNajFPHSQnU80B1O8dJLujWZMg==" crossorigin="anonymous" as="style" onload="this.rel='stylesheet'" />
+		<base href="./">
+    <link rel="icon" type="image/svg+xml" href="../../favicon.svg" type="image/x-icon" />
+    <link rel="alternate icon" href="../../favicon.png" type="image/x-icon" />
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r100/three.min.js" integrity="sha512-PWicXuUyNjtNOMD07lPzvfU0LyteTrsmBfs1NhVAMFGnWI1v9HF4XmIHPJDbG59Yp/Q9EIvPlD4PXB5TA18mMg==" crossorigin="anonymous"></script>
+
+		<style>html{overflow:hidden}body{margin:0}#scene-container{min-width:100vw;min-height:100vh}</style>
+	</head>
+
+	<body>
+    <div id="scene-container">
+			<!-- This div will hold our scene-->
+		</div>
+  </body>
+
+<script>
+// these need to be accessed inside more than one function so we'll global em
+let container;
+let camera;
+let renderer;
+let scene;
+let mesh;
+
+function init() {
+  // Get a reference to the container element that will hold our scene
+  container = document.querySelector("#scene-container");
+
+  // create a Scene
+  scene = new THREE.Scene();
+  scene.background = new THREE.Color(0x8fbcd4);
+
+  // set up the options for a perspective camera
+  const fov = 35; // fov = Field Of View
+  const aspect = container.clientWidth / container.clientHeight;
+  const near = 0.1;
+  const far = 100;
+
+  camera = new THREE.PerspectiveCamera(fov, aspect, near, far);
+
+  // every object is initially created at ( 0, 0, 0 )
+  // we'll move the camera back a bit so that we can view the scene
+  camera.position.set(0, 0, 10);
+
+  // create a geometry
+  const geometry = new THREE.SphereBufferGeometry(1, 16, 24);
+
+  // create a texture loader.
+  const textureLoader = new THREE.TextureLoader();
+
+  // Load a texture. See the note in chapter 4 on working locally, or the page
+  // https://threejs.org/docs/#manual/introduction/How-to-run-things-locally
+  // if you run into problems here
+  const texture = textureLoader.load("img/marsTexture1024.png");
+
+  // set the "color space" of the texture
+  texture.encoding = THREE.sRGBEncoding;
+
+  // reduce blurring at glancing angles
+  texture.anisotropy = 0;
+
+  // create a Standard material using the texture we just loaded as a color map
+  const material = new THREE.MeshStandardMaterial({ map: texture });
+
+  // create a Mesh containing the geometry and material
+  mars = new THREE.Mesh(geometry, material);
+
+  // add the mesh to the scene object
+  scene.add(mars);
+
+  // Create a directional light
+  const light = new THREE.DirectionalLight(0xffffff, 3.0);
+
+  // move the light back and up a bit
+  light.position.set(0, 10, 2);
+
+  // remember to add the light to the scene
+  scene.add(light);
+
+  // create a WebGLRenderer and set its width and height
+  renderer = new THREE.WebGLRenderer({ antialias: false });
+  renderer.setSize(container.clientWidth, container.clientHeight);
+
+  renderer.setPixelRatio(window.devicePixelRatio);
+
+  // set the gamma correction so that output colors look
+  // correct on our screens
+  renderer.gammaFactor = 2.2;
+  renderer.gammaOutput = true;
+
+  // add the automatically created <canvas> element to the page
+  container.appendChild(renderer.domElement);
+
+  renderer.setAnimationLoop(() => {
+    update();
+    render();
+  });
+}
+
+// perform any updates to the scene, called once per frame
+// avoid heavy computation here
+function update() {
+  // increase the mesh's rotation each frame
+  //mesh.rotation.z += 0.0;
+  //mesh.rotation.x += 0.0;
+  mars.rotation.y -= 0.0005;
+}
+
+// render, or 'draw a still image', of the scene
+function render() {
+  renderer.render(scene, camera);
+}
+
+// a function that will be called every time the window gets resized.
+// It can get called a lot, so don't put any heavy computation in here!
+function onWindowResize() {
+  // set the aspect ratio to match the new browser window aspect ratio
+  camera.aspect = container.clientWidth / container.clientHeight;
+
+  // update the camera's frustum
+  camera.updateProjectionMatrix();
+
+  // update the size of the renderer AND the canvas
+  renderer.setSize(container.clientWidth, container.clientHeight);
+}
+
+window.addEventListener("resize", onWindowResize);
+
+// call the init function to set everything up
+init();
+</script>
+</html>
